@@ -8,8 +8,8 @@ Game tự dùng file nếu có, thiếu thì vẽ tạm. **Tất cả PNG nền 
 ## Nhân vật (đứng quay mặt sang phải, chân chạm đáy ảnh, tỉ lệ 150×160)
 | File | Prompt thêm |
 |---|---|
-| baby_idle.png | chubby baby with big head, round cheeks, tuft of hair, blue onesie and white diaper, crawling pose, mischievous smile |
-| baby_push.png | same baby, one arm raised high pushing something, evil giggle, sparkling eyes |
+| baby_idle.png | chubby baby with big head, round cheeks, tuft of hair, blue onesie and white diaper, CRAWLING ON ALL FOURS in side view facing right, diaper butt sticking up high in the air, hands and knees on the ground, head raised looking forward, mischievous smile |
+| baby_push.png | same crawling baby (butt up, side view facing right), one arm raised high in front pushing something, evil giggle, sparkling eyes |
 | baby_innocent.png | same baby sitting, golden halo, huge innocent eyes, hands in lap, angelic smile |
 | baby_stun.png | same baby, dizzy swirl eyes, tears, sitting on floor, stars around head |
 | mom_calm.png | tall mom in apron, hands on hips, suspicious raised eyebrow (180×330, đứng cạnh cửa) |

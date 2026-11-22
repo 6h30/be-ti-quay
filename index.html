@@ -550,6 +550,7 @@ function drawBaby(b,t){
  const im=IMG[key]||IMG.baby_idle;
  if(im){ctx.drawImage(im,-75,-160,150,160);drawHat();ctx.restore();return;}
  const skin='#ffdcc0',shade='#f7b99a',line='#a8604a',hair='#8b5a2b';
+ if(st==='idle'||mv||act){babyCrawl(t,st);ctx.restore();return;}
  ctx.lineCap='round';ctx.lineJoin='round';
  [-20,20].forEach((x,i)=>{const ox=mv?Math.sin(t*14+i*Math.PI)*7:0;ctx.fillStyle=skin;ctx.beginPath();ctx.ellipse(x+ox,-11,15,12,0,0,7);ctx.fill();ctx.fillStyle='#ffb8cf';ctx.beginPath();ctx.ellipse(x+ox+3,-6,5,3,0,0,7);ctx.fill();});
  ctx.fillStyle='#fff';ctx.strokeStyle='#e8d5c8';ctx.lineWidth=3;ctx.beginPath();ctx.ellipse(0,-30,35,21,0,0,7);ctx.fill();ctx.stroke();
@@ -559,7 +560,38 @@ function drawBaby(b,t){
  if(act){ctx.save();ctx.translate(28,-60);ctx.rotate(-.4+Math.sin(t*20)*.1);ctx.beginPath();ctx.ellipse(8,-20,10,20,.5,0,7);ctx.fill();ctx.restore();}
  else if(inn){ctx.beginPath();ctx.ellipse(12,-40,10,9,0,0,7);ctx.fill();}
  else{ctx.beginPath();ctx.ellipse(30,-48,9,14,-.35,0,7);ctx.fill();}
- // đầu
+ babyHead(t,st);
+ drawHat();
+ ctx.restore();
+}
+function babyCrawl(t,st){
+ const mv=st==='move',act=st==='act',skin='#ffdcc0',ph=mv?t*14:0,w=mv?Math.sin(ph)*3:Math.sin(t*5)*4;
+ ctx.lineCap='round';ctx.lineJoin='round';
+ // chân sau: đùi dựng đứng, đầu gối chạm sàn, bàn chân đưa ra sau
+ [1,0].forEach(i=>{const o=mv?Math.sin(ph+i*Math.PI)*10:i*6;
+  ctx.fillStyle=skin;ctx.beginPath();ctx.ellipse(-40+o,-34,14,27,.12,0,7);ctx.fill();
+  ctx.beginPath();ctx.ellipse(-64+o,-9,17,8,0,0,7);ctx.fill();
+  ctx.fillStyle='#ffb8cf';ctx.beginPath();ctx.ellipse(-72+o,-10,6,5,0,0,7);ctx.fill();});
+ // thân áo xanh nghiêng: mông cao, vai thấp
+ ctx.save();ctx.translate(-8,-60);ctx.rotate(.2);ctx.fillStyle='#9fd8ff';ctx.strokeStyle='#6fb6e8';ctx.lineWidth=3;
+ ctx.beginPath();ctx.ellipse(0,0,46,25,0,0,7);ctx.fill();ctx.stroke();txt('⭐',4,6,20,'#000');ctx.restore();
+ // mông tã trắng chu lên trời, lắc lư
+ ctx.save();ctx.translate(-50+w,-72);ctx.rotate(w*.02);ctx.fillStyle='#fff';ctx.strokeStyle='#e8d5c8';ctx.lineWidth=3;
+ ctx.beginPath();ctx.arc(0,0,29,0,7);ctx.fill();ctx.stroke();
+ ctx.fillStyle='#ffb8cf';ctx.beginPath();ctx.arc(-6,-6,4,0,7);ctx.arc(8,-2,4,0,7);ctx.fill();ctx.restore();
+ // tay trước chống sàn
+ const arm=(o,up)=>{ctx.fillStyle=skin;ctx.save();
+  if(up){ctx.translate(30,-52);ctx.rotate(-.9+Math.sin(t*20)*.12);ctx.beginPath();ctx.ellipse(0,-26,10,28,0,0,7);ctx.fill();ctx.beginPath();ctx.arc(0,-56,12,0,7);ctx.fill();}
+  else{ctx.translate(30+o,-30);ctx.rotate(-.1);ctx.beginPath();ctx.ellipse(0,0,10,26,0,0,7);ctx.fill();ctx.beginPath();ctx.arc(2,24,12,0,7);ctx.fill();}
+  ctx.restore();};
+ arm(mv?Math.sin(ph+Math.PI)*10:-6,false);if(!act)arm(mv?Math.sin(ph)*10:8,false);
+ // đầu to ngẩng nhìn phía trước
+ ctx.save();ctx.translate(58,-66+98*.75+(mv?Math.sin(ph*2)*2:0));ctx.scale(.75,.75);ctx.rotate(.12);babyHead(t,st);drawHat();ctx.restore();
+ if(act)arm(0,true);
+}
+function babyHead(t,st){
+ const mv=st==='move',act=st==='act',inn=st==='innocent',stun=st==='stun',skin='#ffdcc0',shade='#f7b99a',line='#a8604a',hair='#8b5a2b';
+ ctx.lineCap='round';ctx.lineJoin='round';
  ctx.fillStyle=skin;ctx.beginPath();ctx.arc(-45,-96,10,0,7);ctx.arc(45,-96,10,0,7);ctx.fill();
  ctx.fillStyle='#ffb8cf';ctx.beginPath();ctx.arc(-45,-96,5,0,7);ctx.arc(45,-96,5,0,7);ctx.fill();
  ctx.fillStyle=skin;ctx.beginPath();ctx.arc(0,-98,46,0,7);ctx.fill();
@@ -580,8 +612,6 @@ function drawBaby(b,t){
  else if(inn){ctx.beginPath();ctx.arc(0,-82,6,.2,Math.PI-.2);ctx.stroke();}
  else{ctx.beginPath();ctx.arc(-5,-81,5,.1,Math.PI-.1);ctx.stroke();ctx.beginPath();ctx.arc(5,-81,5,.1,Math.PI-.1);ctx.stroke();}
  if(inn){ctx.strokeStyle='#ffd400';ctx.lineWidth=6;ctx.beginPath();ctx.ellipse(0,-162,26,8,0,0,7);ctx.stroke();txt('✨',-48,-140,20,'#000');txt('✨',50,-128,16,'#000');}
- drawHat();
- ctx.restore();
 }
 function drawMomBody(m){
  const scold=m.state==='scold',sc=scold?1.05+Math.sin(G.t*30)*.02:1;
