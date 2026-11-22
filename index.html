@@ -268,7 +268,7 @@ addEventListener('visibilitychange',()=>{if(AC)document.hidden?AC.suspend():AC.r
 /* ---------- ASSETS (tuỳ chọn) ---------- */
 const IMG={};
 function loadImg(k){const i=new Image();i.onload=()=>{IMG[k]=i};i.src='assets/'+k+'.png';}
-['baby_idle','baby_push','baby_innocent','baby_stun','mom_warn','mom_angry','mom_calm','bg_hall']
+['baby_idle','baby_push','baby_innocent','baby_stun','mom_angry','mom_calm','pest_cat','pest_dog','pest_dad']
  .concat(ROOMS.map(r=>'bg_'+r.id),Object.keys(ITEMS).map(k=>'item_'+k),HATS.map(h=>'hat_'+h.id)).forEach(loadImg);
 
 /* ---------- GAME STATE ---------- */
@@ -677,7 +677,7 @@ function render(t){
  drawBG(room);drawPlats(room);if(EV.theme)drawAmbient(t);
  if(G){G.mess.forEach(m=>{ctx.fillStyle=m.c;ctx.beginPath();ctx.arc(m.x,m.y,m.r,0,7);ctx.fill();});
   G.items.forEach(drawItem);
-  if(!G.running&&screen==='menu'){ctx.save();ctx.translate(270,FLOORY);ctx.scale(1.5,1.5);ctx.translate(-270,-FLOORY-190/1.5);drawBaby(G.baby,t);ctx.restore();}else drawBaby(G.baby,t);drawPest();drawMom();
+  if(!G.running&&screen==='menu'){ctx.save();ctx.translate(270,FLOORY);ctx.scale(1.5,1.5);ctx.translate(-270,-FLOORY-190/1.5);drawBaby(G.baby,t);ctx.restore();}else{drawMom();drawBaby(G.baby,t);}drawPest();
   G.parts.forEach(p=>{ctx.fillStyle=p.c;ctx.globalAlpha=Math.min(1,p.life*2);ctx.beginPath();ctx.arc(p.x,p.y,p.s*.6,0,7);ctx.fill();});ctx.globalAlpha=1;
   G.floats.forEach(f=>{ctx.globalAlpha=Math.max(0,1-f.t/1.2);txt(f.txt,f.x,f.y,f.s,f.c,'center','#4a1a5a');});ctx.globalAlpha=1;}
  ctx.restore();

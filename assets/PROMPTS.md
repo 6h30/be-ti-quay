@@ -34,3 +34,7 @@ Prompt mẫu: "cute cartoon *<tên món>*, glossy, game item icon, centered".
 ## Âm thanh (tuỳ chọn) – thả MP3 vào `assets/audio/`
 Không có file thì game dùng nhạc/âm tổng hợp sẵn. Tên file: `music_game` (nhạc nền lặp, ~60–90s, vui nhộn, 120–130 BPM), `sfx_break` (đồ vỡ), `sfx_pop` (đẩy đổ), `sfx_coin`, `sfx_steps` (bước chân mẹ), `sfx_caught` (bị mẹ bắt), `sfx_ok` (ngây thơ thành công), `sfx_gold`, `sfx_bark`, `sfx_meow`, `sfx_crash` (bố ngã), `sfx_giggle` (bé cười khúc khích).
 Gợi ý nguồn: Suno/Udio cho nhạc nền ("playful ukulele and pizzicato, funny cartoon chaos, loopable"), ElevenLabs Sound Effects cho hiệu ứng. Lưu ý: khi mở bằng file:// trình duyệt chặn nạp MP3, cần chạy qua máy chủ (hoặc trong app đóng gói).
+
+## Còn thiếu (game đang vẽ tạm bằng emoji) – mũ sự kiện, 60×50, nền trong suốt
+`hat_ev_noel.png` (mũ ông già Noel), `hat_ev_tet.png` (mũ dê vàng / khăn đóng Tết), `hat_ev_gold.png` (mũ vàng lấp lánh), `hat_ev_house.png` (mũ nhà loạn, mũ hề), `hat_ev_combo.png` (mũ lửa), `hat_ev_coin.png` (mũ đồng xu vàng), `hat_ev_calm.png` (mũ ngủ có sao).
+Đã có sẵn (dư dùng được): baby_walk, baby_laugh, baby_sulk, baby_cry.

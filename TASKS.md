@@ -1,7 +1,8 @@
 # Tasks
 
 ## Active
-- [ ] Tạo hình bằng GPT theo `assets/PROMPTS.md`
+- [x] Hình GPT: bé, mẹ, bố/chó/mèo, 25 đồ, 6 mũ, 5 nền (đã nạp)
+- [ ] Hình còn thiếu: 7 mũ sự kiện hat_ev_* (xem PROMPTS.md)
 - [ ] Chơi thử, chỉnh độ khó (khoảng cách mẹ tới, ngưỡng sao)
 - [x] Chốt hướng: app điện thoại + quảng cáo thưởng
 - [x] Sự kiện Noel + Tết (v0.7)
